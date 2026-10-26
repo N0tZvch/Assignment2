@@ -42,7 +42,7 @@ def cost_per_class(annual_cost, credits):
 
 def cost_per_party(annual_cost, credits, parties):
     """Give back what one party costs. credits is the number taken this semester."""
-    return (annual_cost / (SEMESTERS_PER_YEAR * credits)) * (CS1430_CREDITS / parties)
+    return cost_per_class(annual_cost, credits) * parties
 
 
 # ---- PROGRAM ----
@@ -80,8 +80,8 @@ def main():
         elif choice == "5":
             print(f"Cost per CS 1430 class meeting: ${cost_per_class(annual_cost, credits):.2f}")
         elif choice == "6":
-            parties = float(input("Enter the number of parties this semester: "))
-            print(f"Cost per party (Worth it?): ${cost_per_party(annual_cost, credits, parties):.2f}")
+            parties = int(input("Enter the number of parties this semester: "))
+            print(f"Those parties cost you: ${cost_per_party(annual_cost, credits, parties):.2f}")
         else:
             print("Invalid option. Please try again.")
 
